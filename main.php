@@ -38,14 +38,16 @@ class Farm {
             print_r('Wrong period!');
         }
 
+        
         foreach ($this->barn as $animal => $animalArray) {
             $count = count($animalArray);
             $quantity = 0;
             $cropType = $animalArray[0]->getCropType();
             for ($i = 0; $i < $count; $i++) {
-                $quantity += $animalArray[$i]->collectCrop();
+                for ($j = 0; $j < $days; $j++) {
+                    $quantity += $animalArray[$i]->collectCrop();
+                }
             }
-
             print_r("${cropType}: ${quantity}<br/>");
         }
         print_r("<br/><br/>");
